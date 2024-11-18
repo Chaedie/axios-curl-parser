@@ -4,15 +4,21 @@
   "description": "This module is for parsing axios response to curl command format.\n\nIf your team want to make debug log with `curl` command, This module will be help you.",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && terser dist/index.js --compress --mangle --output dist/index.min.js",
     "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/your-repo.git"
+    "url": "git+https://github.com/Chaedie/axios-curl-parser.git"
   },
   "devDependencies": {
+    "terser": "^5.36.0",
     "typescript": "~5.6.2"
   },
   "dependencies": {
