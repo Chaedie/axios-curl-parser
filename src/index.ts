@@ -1,7 +1,6 @@
-// import {AxiosResponse} from "axios";
+import {AxiosResponse} from "axios";
 
-// export function axiosResponseToCurlCommand(response: AxiosResponse) {
-export function axiosResponseToCurlCommand(response) {
+export function axiosResponseToCurlCommand(response: AxiosResponse) {
     const { config } = response
     const { method = 'GET', baseURL = '', url, headers = {}, data } = config
 

@@ -2,15 +2,16 @@
   "name": "axios-curl-parser",
   "private": false,
   "version": "0.0.2",
-  "main": "index.js",
+  "description": "This module is for parsing axios response to curl command format.\n\nIf your team want to make debug log with `curl` command, This module will be help you.",
+  "main": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "author": "ChaedongIm",
+  "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "tsc && vite build"
   },
   "devDependencies": {
-    "typescript": "~5.6.2",
-    "vite": "^5.4.10"
+    "typescript": "~5.6.2"
   },
   "dependencies": {
     "axios": "^1.7.7"
