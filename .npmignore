@@ -1,0 +1,3 @@
+src/        # Exclude the source code directory
+*.ts        # Exclude TypeScript files
+tsconfig.json
