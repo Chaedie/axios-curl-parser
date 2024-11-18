@@ -5,6 +5,7 @@
     "declaration": true,  // Generates declaration files (.d.ts)
     "declarationDir": "./dist/types",  // Output directory for types
     "outDir": "./dist",  // Output directory for JS files
+    "sourceMap": false,  // Disable source maps if you don't want users to see source code
     "strict": true,  // Enable strict type-checking options
     "esModuleInterop": true,  // Allows default imports for CommonJS modules
     "moduleResolution": "node",  // Resolves modules using Node.js resolution logic
