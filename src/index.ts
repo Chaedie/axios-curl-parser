@@ -2,10 +2,17 @@ import { AxiosResponse } from 'axios'
 
 export function axiosResponseToCurlCommand(response: AxiosResponse) {
   const { config } = response
-  const { method = 'GET', baseURL = '', url, headers = {}, data } = config
+  const { method = 'GET', baseURL = '', url, headers = {}, data, params } = config
 
-  // 전체 URL 구성 (baseURL + url)
-  const fullUrl = new URL(url ?? '', baseURL).toString()
+  // 쿼리 파라미터를 URL에 추가
+  const fullUrl = new URL(url ?? '', baseURL)
+  if (params) {
+    Object.entries(params).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) {
+        fullUrl.searchParams.append(key, String(value))
+      }
+    })
+  }
 
   // 기본 curl 명령어 시작
   let curlCommand = `curl -X ${method.toUpperCase()}`
@@ -22,7 +29,7 @@ export function axiosResponseToCurlCommand(response: AxiosResponse) {
   }
 
   // URL 추가
-  curlCommand += ` "${fullUrl}"`
+  curlCommand += ` "${fullUrl.toString()}"`
 
   return curlCommand
 }
