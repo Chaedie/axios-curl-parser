@@ -15,7 +15,7 @@ export function axiosResponseToCurlCommand(response: AxiosResponse) {
   }
 
   // 기본 curl 명령어 시작
-  let curlCommand = `curl -X ${method.toUpperCase()}`
+  let curlCommand = `curl -X ${method.toUpperCase()} \\ \n `
 
   // 헤더 추가
   Object.entries(headers).forEach(([key, value]) => {
