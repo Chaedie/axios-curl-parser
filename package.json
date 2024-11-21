@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "build": "tsc && terser dist/index.js --compress --mangle --output dist/index.min.js",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "tsx src/test.ts"
   },
   "repository": {
     "type": "git",
