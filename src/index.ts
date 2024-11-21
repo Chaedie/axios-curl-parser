@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios'
 
 export function axiosResponseToCurlCommand(response: AxiosResponse) {
   const { config } = response
-  const { method = 'GET', baseURL = '', url, headers = {}, data, params } = config
+  const { method = 'GET', baseURL, url, headers = {}, data, params } = config
 
   // 쿼리 파라미터를 URL에 추가
   const fullUrl = new URL(url ?? '', baseURL)
@@ -19,13 +19,13 @@ export function axiosResponseToCurlCommand(response: AxiosResponse) {
 
   // 헤더 추가
   Object.entries(headers).forEach(([key, value]) => {
-    curlCommand += ` -H "${key}: ${value}"`
+    curlCommand += ` -H "${key}: ${value}" \\ \n `
   })
 
   // 데이터 추가 (GET 요청은 제외)
   if (data && method.toUpperCase() !== 'GET') {
     const dataString = typeof data === 'object' ? JSON.stringify(data) : data
-    curlCommand += ` -d '${dataString}'`
+    curlCommand += ` -d '${dataString}' \\ \n `
   }
 
   // URL 추가
