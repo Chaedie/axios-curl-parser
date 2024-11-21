@@ -1,6 +1,6 @@
 {
   "name": "axios-curl-parser",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "This module is for parsing axios response to curl command format.\n\nIf your team want to make debug log with `curl` command, This module will be help you.",
   "type": "module",
   "main": "dist/index.js",
@@ -37,5 +37,6 @@
     "eslint-plugin-simple-import-sort": "^12.1.1"
   },
   "author": "ChaedongIm",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": ["axios", "curl", "curlize", "logging"]
 }
