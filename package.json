@@ -1,6 +1,6 @@
 {
   "name": "axios-curl-parser",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "This module is for parsing axios response to curl command format.\n\nIf your team want to make debug log with `curl` command, This module will be help you.",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
