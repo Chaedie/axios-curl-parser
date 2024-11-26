@@ -18,11 +18,11 @@ export function axiosResponseToCurlCommand(response: AxiosResponse) {
   let curlCommand = `curl -X ${method.toUpperCase()} \\\n`
 
   // URL 추가
-  curlCommand += ` "${fullUrl.toString()} \\\n"`
+  curlCommand += ` '${fullUrl.toString()}' \\\n`
 
   // 헤더 추가
   Object.entries(headers).forEach(([key, value]) => {
-    curlCommand += ` -H "${key}: ${value}" \\\n`
+    curlCommand += ` -H '${key}: ${value}' \\\n`
   })
 
   // 데이터 추가 (GET 요청은 제외)
