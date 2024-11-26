@@ -17,9 +17,6 @@ export function axiosResponseToCurlCommand(response: AxiosResponse) {
   // 기본 curl 명령어 시작
   let curlCommand = `curl -X ${method.toUpperCase()} \\\n`
 
-  // URL 추가
-  curlCommand += ` '${fullUrl.toString()}' \\\n`
-
   // 헤더 추가
   Object.entries(headers).forEach(([key, value]) => {
     curlCommand += ` -H '${key}: ${value}' \\\n`
@@ -28,8 +25,11 @@ export function axiosResponseToCurlCommand(response: AxiosResponse) {
   // 데이터 추가 (GET 요청은 제외)
   if (data && method.toUpperCase() !== 'GET') {
     const dataString = typeof data === 'object' ? JSON.stringify(data) : data
-    curlCommand += ` -d '${dataString}'`
+    curlCommand += ` -d '${dataString}' \\\n`
   }
+
+  // URL 추가
+  curlCommand += ` '${fullUrl.toString()}'`
 
   return curlCommand
 }
