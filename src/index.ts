@@ -5,7 +5,7 @@ export function axiosResponseToCurlCommand(response: AxiosResponse) {
   const { method = 'GET', baseURL, url, headers = {}, data, params } = config
 
   // 쿼리 파라미터를 URL에 추가
-  const fullUrl = new URL(url ?? '', baseURL)
+  const fullUrl = new URL(response.request.url)
   if (params) {
     Object.entries(params).forEach(([key, value]) => {
       if (value !== undefined && value !== null) {
