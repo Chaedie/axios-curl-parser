@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios'
 import { axiosResponseToCurlCommand } from './index'
 
 axios.interceptors.response.use(async (response: AxiosResponse<any>) => {
-  const curlCommand = axiosResponseToCurlCommand(response)
+  const curlCommand = axiosResponseToCurlCommand(response, response.config.url)
   console.debug('curlCommand = ', curlCommand)
 
   return response
