@@ -1,10 +1,18 @@
 import { AxiosResponse } from 'axios'
+import { buildFullPath } from './utils/urlUtils'
 
 export function axiosResponseToCurlCommand(response: AxiosResponse) {
   const { config } = response
   const { method = 'GET', baseURL, url, headers = {}, data, params } = config
 
-  const fullUrl = new URL(response.request.responseURL)
+  let fullPath
+  if (baseURL || url) {
+    fullPath = buildFullPath(baseURL, url)
+  } else {
+    fullPath = response.request.responseURL
+  }
+
+  const fullUrl = new URL(fullPath)
   if (params) {
     Object.entries(params).forEach(([key, value]) => {
       if (value !== undefined && value !== null) {
