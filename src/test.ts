@@ -8,8 +8,20 @@ axios.interceptors.response.use(async (response: AxiosResponse<any>) => {
   return response
 })
 
-axios
-  .get('https://jsonplaceholder.typicode.com/posts/1', {
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'Accept-Encoding': '' },
-  })
-  .then((response: any) => {})
+async function test() {
+  try {
+    const resAbs = await axios.get('https://jsonplaceholder.typicode.com/posts/1', {
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'Accept-Encoding': '' },
+    })
+    // console.log('🔥🔥test/test :20 - res = ', resAbs)
+
+    const resRel = await axios.get('/posts/1', {
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'Accept-Encoding': '' },
+    })
+    // console.log('🔥🔥test/test :20 - res = ', resRel)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+test()
